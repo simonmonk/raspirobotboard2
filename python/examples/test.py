@@ -71,6 +71,9 @@ def test_motors():
     
     rr.set_motors(1, 0, 1, 0)
     confirm("Are Both motors going forwards?")
+
+    rr.set_motors(0.5, 0, 1, 0)
+    confirm("Is one motor going forwards at half speed?")
     
     rr.set_motors(1, 1, 1, 1)
     confirm("Are both motors going backwards?")
