@@ -3,7 +3,7 @@
 import rrb2 as rrb
 import time
 
-rr = RRB2(revision=2)
+rr = rrb.RRB2(revision=2)
 
 def confirm(question):
     answer = raw_input(question)

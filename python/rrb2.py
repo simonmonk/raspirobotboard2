@@ -1,4 +1,3 @@
-#raspirobotboard.py Library
 
 import RPi.GPIO as GPIO
 import time
