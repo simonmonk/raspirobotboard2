@@ -6,7 +6,8 @@ https://github.com/simonmonk/raspirobotboard
 
 # Introduction
 
-![Minion](http://octodex.github.com/images/minion.png)
 
 # Installation
 
+
+# Example Code
