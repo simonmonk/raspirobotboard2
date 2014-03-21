@@ -6,6 +6,13 @@ https://github.com/simonmonk/raspirobotboard
 
 # Introduction
 
+Version 2 of the RaspiRobot Board has learnt from the lessons and feedback from version 1 and is a great improvement. 
+
+![RRBv2](https://raw.githubusercontent.com/simonmonk/wiki_images/master/rrb2_on_pi.jpg)
+
+
+The main features of version 2 are 
+
 
 # Installation
 
