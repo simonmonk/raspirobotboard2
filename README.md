@@ -50,7 +50,7 @@ $ unzip master.zip
 $ cd raspirobotboard2-master
 $ sudo python setup.py install
 `
-Attach the RRB2 to your Raspberry Pi. You do not need to attach batteries, motors or anything else to the RRB2 just yet. For now you can just power it through the Pi. 
+Attach the RRB2 to your Raspberry Pi. You do not need to attach batteries, motors or anything else to the RRB2 just yet. For now you can just power it through the Pi's normal USB power connector.
 
 Run Some Tests from the Python Console Now that everything is installed, we can experiment with the RaspiRobot Board v2, without any motors 
 
@@ -79,21 +79,22 @@ The quickest way to use the RRB2 as a roving robot is to buy a robot chassis suc
 
 Here is one such chassis. The first step is to bolt this all together. Note that these are usually supplied with a 4 x AA battery box. You will need to swap this for a similar 6 x AA battery box or a 7.2V LiPo battery pack. Rechargeable batteries are a good idea when driving motors.
 
-[chassis kit in parts]
+![Chassis](https://github.com/simonmonk/wiki_images/blob/master/rrb_robot_chassis_parts.jpg)
+
 
 Once the chassis is built, use some of the bolts suppled to fix the Raspberry Pi on the chassis and then attach the RRB2 onto the GPIO connector. Make sure its the right way arround, and that all the pins meet up with the socket.
 
 The leads from the motors will thread up through the chassis and each pair of leads should go to one of the two screw terminals labeller L and R for (left and right). If you put the leads in the wrong way around, the direction of the motor will be opposite to that expected, so just swap them over if this happens.
 
-[motors attacghed]
+![Motor wiring](https://raw.githubusercontent.com/simonmonk/wiki_images/master/rrb_attaching%20motors.jpg)
 
 Next, make sure that your Raspberry Pi's USB power lead is unplugged. From now on we are going to power it from batteries.
 
 **WARNING: Never power the Raspberry Pi from both batteries and the USB power connector. One or other, but NOT both.**
 
-Wire the battery pack into the third pair of screw terminals. +V towards the outside of the board. The Raspberry Pi's power light should light up and it will strt to boot.
+Wire the battery pack into the third pair of screw terminals. +V towards the outside of the board. The Raspberry Pi's power light should light up and it will start to boot. LED1 and LED2 on the RRB2 will also light up.
 
-Having your Pi set up for WiFi will allow you to connect to it wirelessly [over SSH](http://learn.adafruit.com/adafruits-raspberry-pi-lesson-6-using-ssh/overview). SO you may want to plug in a USB WiFi dongle.
+Having your Pi set up for WiFi will allow you to connect to it wirelessly [over SSH](http://learn.adafruit.com/adafruits-raspberry-pi-lesson-6-using-ssh/overview). So, you may want to plug in a USB WiFi dongle.
 
 
 
