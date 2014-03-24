@@ -6,14 +6,14 @@ https://github.com/simonmonk/raspirobotboard
 
 # Introduction
 
-Version 2 of the RaspiRobot Board has learnt from the lessons and feedback from version 1 and it is a great improvement over version 1. 
+Version 2 of the RaspiRobot Board (RRB2) has learnt by the feedback from version 1 and it is a great improvement. 
 
 ![RRBv2](https://raw.githubusercontent.com/simonmonk/wiki_images/master/rrb_on_chassis_fully%20loaded.JPG)
 
 
-The main features of version 2 are listed below. Improvements from version 1 are highlighted in bold:
-+ Supplied fully assembled - no soldering
-+ Bidirectional control of two motors
+The main features of version 2 are listed below. Changes from version 1 are highlighted in bold:
++ **Supplied fully assembled - no soldering**
++ Bi-directional control of two motors
 + **Variable (PWM) power control**. This allows you to both control the speed of the motors independently and the use of  lower voltage motors than the battery pack. 
 + **Supplies the Raspberry Pi with upto 2A using a switch mode power supply - run a fully loaded Pi and the Robot from 6 x AA batteries**
 + **Rangefinder header socket directly compatible with cheap HC-SR-04 ultrasonic range finders. Just plug them in directly**
@@ -35,9 +35,7 @@ The diagram below shows how an RRB2 board is used. The RRB2 is powered from a ba
 
 Note that you don't need a separate power supply for the Raspberry Pi. The RRB2 will provide 5V at 2A with ease to the Raspberry Pi, and because the motors are powered directly from the battery and not via the RRB2s voltage regulator, the supply to the Raspberry Pi will remain clean and reliable.
 
-This does mean that the motors that you use may be okay with the battery voltage. So, if you are using 6 x AA batteries giving a voltage of 9V then you should use motors that are okay with 9V.
-
-If you have lower voltage motors, such as 6V motors often supplied as part of a robot chassis, then you can still use these, but you must be careful to lower the output power of the motors in your control program, or you could burn out your motors.
+This does mean that the motors that you use may not be okay with the battery voltage. So, if you are using 6 x AA batteries giving a voltage of 9V then you should use motors that are okay with 9V. If you have lower voltage motors, such as 6V motors often supplied as part of a robot chassis, then you can still use these, but you must be careful to lower the output power of the motors in your control program, or you could burn out your motors. For example if your battery pack is 9V but your motors are 6V, then use a speed parameter of 6/9 or roughly 0.7 as the speed parameter to the motor commands.
 
 
 # Installing the Python Libraries
@@ -53,7 +51,7 @@ $ sudo python setup.py install
 
 Attach the RRB2 to your Raspberry Pi. You do not need to attach batteries, motors or anything else to the RRB2 just yet. For now you can just power it through the Pi's normal USB power connector.
 
-Run Some Tests from the Python Console Now that everything is installed, we can experiment with the RaspiRobot Board v2, without any motors 
+Lets run some tests from the Python Console now that everything is installed. We can experiment with the RaspiRobot Board v2, even without any motors 
 
 Open a Python console (Python2 not 3) by typing the following into a Terminal window:
 `$ sudo python`
@@ -85,7 +83,7 @@ Here is one such chassis. The first step is to bolt this all together. Note that
 
 Once the chassis is built, use some of the bolts suppled to fix the Raspberry Pi on the chassis and then attach the RRB2 onto the GPIO connector. Make sure its the right way arround, and that all the pins meet up with the socket.
 
-The leads from the motors will thread up through the chassis and each pair of leads should go to one of the two screw terminals labeller L and R for (left and right). If you put the leads in the wrong way around, the direction of the motor will be opposite to that expected, so just swap them over if this happens.
+The leads from the motors will thread up through the chassis and each pair of leads should go to one of the two screw terminals labelled L and R for (left and right). If you put the leads in the wrong way around, the direction of the motor will be opposite to that expected, so just swap them over if this happens.
 
 ![Motor wiring](https://raw.githubusercontent.com/simonmonk/wiki_images/master/rrb_attaching%20motors.jpg)
 
@@ -93,7 +91,7 @@ Next, make sure that your Raspberry Pi's USB power lead is unplugged. From now o
 
 **WARNING: Never power the Raspberry Pi from both batteries and the USB power connector. One or other, but NOT both.**
 
-It is a good idea to leave the wheels off the robot chassis so that it does not unexpectedly drive itself off your table. One or both of the motors may spin as the Raspberry Pi starts up.
+It is a good idea to leave the wheels off the robot chassis for now so that it does not unexpectedly drive itself off your table. One or both of the motors may spin as the Raspberry Pi starts up.
 
 Wire the battery pack into the third pair of screw terminals. +V towards the outside of the board. The Raspberry Pi's power light should light up and it will start to boot. LED1 and LED2 on the RRB2 will also light up.
 
@@ -105,15 +103,22 @@ Having your Pi set up for WiFi will allow you to connect to it wirelessly [over 
 # API Reference
 
 ## General
-The library implements a class called RaspiRobot. This is only available for Python 2 and any Python programs that you write that use the libaray must be run as a super user. I.e.
+The library implements a class called RRB2. This is only available for Python 2 and any Python programs that you write that use the libaray must be run as a super user. I.e.
 
-`su python myProgram.py'
+`sudo python myProgram.py'
 
 To import the library and create an instance of the class, put this at the top of your Python program.
 
 ```
 from rrb2 import *
 rr = RRB2()
+```
+
+If you have an older revision 1 Raspberry Pi, then you need to do this instead:
+
+```
+from rrb2 import *
+rr = RRB2(revision=1)
 ```
 
 The rest is pretty straightforward, there are just a load of useful methods on the class that you can use.
@@ -124,11 +129,11 @@ There are two LEDs built-in to the RaspiRobotBoard, called LED1 and LED2. Both o
 
 To turn LED1 on just do:
 
-`rr.setLED1(1)`
+`rr.set_led1(1)`
 
 To turn it off again do:
 
-`rr.setLED1(0)`
+`rr.set_led1(0)`
 
 To control LED2 just do the same thing but using setLED2.
 
@@ -139,7 +144,6 @@ The sw1_closed() and sw2_closed() functions return true if the contacts for that
 The following test program will show you the state of each of the switch contacts.
 
 ```
-import RPi.GPIO as GPIO
 from rrb2 import *
 
 rr = RRB2()
@@ -211,6 +215,27 @@ If you fit the RRB2 with an SR-04 ultrasonic rangefinder, then you can use the f
 
 `rr.get_distance()`
 
+## Hardware
+
+The RRB2 uses the following pins:
+
+    LEFT_GO_PIN = 17
+    LEFT_DIR_PIN = 4
+    RIGHT_GO_PIN = 10
+    RIGHT_DIR_PIN = 25   
+    SW1_PIN = 11
+    SW2_PIN = 9
+    LED1_PIN = 7
+    LED2_PIN = 8
+    OC1_PIN = 22
+    OC2_PIN = 27
+    OC2_PIN_R1 = 21 (rev 1) or 27 rev 2
+    TRIGGER_PIN = 18
+    ECHO_PIN = 23
+
+The LEDs and OC outputs are buffered. The switch inputs are not.
+
+You can find the EAGLE design files in the "hardware" section of tis repo.
 
 
 # Using I2C Displays
@@ -222,9 +247,11 @@ The I2C socket is pin compatible with these Adafruit displays:
 
 To use these you will need to download Adafruit's Python library for the Pi from [here](http://learn.adafruit.com/matrix-7-segment-led-backpack-with-the-raspberry-pi/overview).
 
-Make sure that you plug the display in the right way around. The socket pins are labelled on the RRB2.
+Make sure that you plug the display in the right way around. The socket pins are labelled on the RRB2, make sure they match up with the labels on the display. You can use male to female jumper wires if you wish to put the display further away or its too big.
 
 
 # Example Projects
 
-Have a look in the examples folder of this library for some examples using the RRB2.
+Have a look in the "examples" folder of this library for some examples using the RRB2.
+
+
