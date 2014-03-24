@@ -59,8 +59,8 @@ class RRB2:
         self.right_pwm.ChangeDutyCycle(right_go * 100)
         GPIO.output(self.RIGHT_DIR_PIN, right_dir)
 
-    def forward(self, seconds=0):
-        self.set_motors(1, 0, 1, 0)
+    def forward(self, seconds=0, speed=0.5):
+        self.set_motors(speed, 0, speed, 0)
         if seconds > 0:
             time.sleep(seconds)
             self.stop()
@@ -68,20 +68,20 @@ class RRB2:
     def stop(self):
         self.set_motors(0, 0, 0, 0)
  
-    def reverse(self, seconds=0):
-        self.set_motors(1, 1, 1, 1)
+    def reverse(self, seconds=0, speed=0.5):
+        self.set_motors(speed, 1, speed, 1)
         if seconds > 0:
             time.sleep(seconds)
             self.stop()
     
-    def left(self, seconds=0):
-        self.set_motors(1, 0, 1, 1)
+    def left(self, seconds=0, speed=0.5):
+        self.set_motors(speed, 0, speed, 1)
         if seconds > 0:
             time.sleep(seconds)
             self.stop()
 
-    def right(self, seconds=0):
-        self.set_motors(1, 1, 1, 0)
+    def right(self, seconds=0, speed=0.5):
+        self.set_motors(speed, 1, speed, 0)
         if seconds > 0:
             time.sleep(seconds)
             self.stop()
