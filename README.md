@@ -44,12 +44,13 @@ If you have lower voltage motors, such as 6V motors often supplied as part of a 
 
 On your Raspberry Pi, issue the following commands in a Terminal window:
 
-`
+```
 $ wget https://github.com/simonmonk/raspirobotboard2/archive/master.zip
 $ unzip master.zip
-$ cd raspirobotboard2-master
+$ cd raspirobotboard2-master/python
 $ sudo python setup.py install
-`
+```
+
 Attach the RRB2 to your Raspberry Pi. You do not need to attach batteries, motors or anything else to the RRB2 just yet. For now you can just power it through the Pi's normal USB power connector.
 
 Run Some Tests from the Python Console Now that everything is installed, we can experiment with the RaspiRobot Board v2, without any motors 
@@ -71,7 +72,7 @@ rr.sw1_closed()
 
 The last step should display the answer "False" because no switch is attached.
 
-
+If you prefer, you can use True and False in place of 1 and 0 in the examples above.
 
 # Connect a Battery and Motors
 
@@ -91,6 +92,8 @@ The leads from the motors will thread up through the chassis and each pair of le
 Next, make sure that your Raspberry Pi's USB power lead is unplugged. From now on we are going to power it from batteries.
 
 **WARNING: Never power the Raspberry Pi from both batteries and the USB power connector. One or other, but NOT both.**
+
+It is a good idea to leave the wheels off the robot chassis so that it does not unexpectedly drive itself off your table. One or both of the motors may spin as the Raspberry Pi starts up.
 
 Wire the battery pack into the third pair of screw terminals. +V towards the outside of the board. The Raspberry Pi's power light should light up and it will start to boot. LED1 and LED2 on the RRB2 will also light up.
 
