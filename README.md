@@ -55,25 +55,86 @@ Attach the RRB2 to your Raspberry Pi. You do not need to attach batteries, motor
 Run Some Tests from the Python Console Now that everything is installed, we can experiment with the RaspiRobot Board v2, without any motors 
 
 Open a Python console (Python2 not 3) by typing the following into a Terminal window:
-`
-$ sudo python
-`
+`$ sudo python`
 
 Then, within the python console, type the following, one line at a time:
 
-`
-from rrb2 import *
-rr = RaspiRobot()
-rr.set_led1(1)
-rr.set_led1(0)
-rr.set_led2(1)
-rr.set_led2(0)
-rr.sw1_closed()
-`
+`from rrb2 import *`
+`rr = RRB2()`
+`rr.set_led1(1)`
+`rr.set_led1(0)`
+`rr.set_led2(1)`
+`rr.set_led2(0)`
+`rr.sw1_closed()`
+
 
 The last step should display the answer "False" because no switch is attached.
 
 
 
+# Connect a Battery and Motors
 
-# Example Code
+
+# API Reference
+
+## General
+The library implements a class called RaspiRobot. This is only available for Python 2 and any Python programs that you write that use the libaray must be run as a super user. I.e.
+
+`su python myProgram.py'
+
+To import the library and create an instance of the class, put this at the top of your Python program.
+
+`from rrb2 import *`
+`rr = RRB2()`
+
+The rest is pretty straightforward, there are just a load of useful methods on the class that you can use.
+
+## LEDs
+
+There are two LEDs built-in to the RaspiRobotBoard, called LED1 and LED2. Both of these can be turned on and off using the following methods:
+
+To turn LED1 on just do:
+
+`rr.setLED1(1)`
+
+To turn it off again do:
+
+`rr.setLED1(0)`
+
+To control LED2 just do the same thing but using setLED2.
+
+## Switch Inputs
+
+The sw1_closed() and sw2_closed() functions return true if the contacts for that switch are closed. By default, the switches are open. You can test out closing the switch by shorting the two contacts with a screwdriver.
+
+The following test program will show you the state of each of the switch contacts.
+
+`import RPi.GPIO as GPIO`
+`from rrb2 import *`
+``
+`rr = RRB2()`
+``
+`while True:`
+`    print("SW1=" + str(rr.sw1_closed()) + " SW2=" + str(rr.sw2_closed()))`
+`    raw_input("check again")`
+
+
+## Open Collector Outputs
+
+The RaspiRobotBoard has two low-power open collector outputs. These can each source up to 25mA and so are suitable for driving LEDs with series resistors. They can also be used to drive transistors and other external electronics. They are buffered and therefore protect the Raspberry Pi' s processor.
+
+To turn the Open Collector OC1 output on just do:
+
+`rr.set_oc1(1)`
+
+To turn it off again do: 
+
+`rr.set_oc1(0)`
+
+To control OC2, substitute oc2 in place of oc1 in the examples above
+
+
+
+# Example Projects
+
+Have a look in the examples folder of this library for some examples using the RRB2.
