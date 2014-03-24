@@ -138,6 +138,29 @@ To turn it off again do:
 
 To control OC2, substitute oc2 in place of oc1 in the examples above
 
+## Motor (High Level Interface)
+
+There are two levels of command for controlling the motors. There is a high level interface that assumes that the motors are connected to wheels on a rover. These commands are forward, reverse, left, right and stop.
+
+`rr.forward()`
+
+... will start both motors running in the same direction to move the robot rover forwards. They will continue in this direction until another command is issued.
+
+If you want to move forward for a certain amount of time, you can specify a number of seconds as an optional first argument. If you supply a second parameter between 0 and 1 this will control the speed of the motor. This is set to 0.5 as a defaut. If you want the motors to run indefinately, but also want to control the speed, then use 0 as the first patrameter.
+
+Some examples:
+
+```
+rr.forward()       # forward half speed indefinately
+rr.forward(5)      # forward for 5 seconds at half speed
+rr.forward(5, 1)   # forward for 5 seconds at full speed
+```
+
+The commands left, right and reverse all work in the same way.
+
+The stop command stops all the motors.
+
+
 
 
 # Example Projects
