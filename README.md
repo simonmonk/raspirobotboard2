@@ -1,6 +1,6 @@
 Source code for use with the RaspiRobot Board V2.
 
-Note that if you are looking for version 1 of this board, please see:
+**Note that if you are looking for version 1 of this board, please see:**
 
 https://github.com/simonmonk/raspirobotboard
 
@@ -74,6 +74,28 @@ The last step should display the answer "False" because no switch is attached.
 
 
 # Connect a Battery and Motors
+
+The quickest way to use the RRB2 as a roving robot is to buy a robot chassis such as the Magician Chassis (available from many sources) or similar low-cost robot chassis kits from eBay. These kits come as a laser cut body, a pair of gearmotors, often a battery box and nuts and bolts to fix it all together.
+
+Here is one such chassis. The first step is to bolt this all together. Note that these are usually supplied with a 4 x AA battery box. You will need to swap this for a similar 6 x AA battery box or a 7.2V LiPo battery pack. Rechargeable batteries are a good idea when driving motors.
+
+[chassis kit in parts]
+
+Once the chassis is built, use some of the bolts suppled to fix the Raspberry Pi on the chassis and then attach the RRB2 onto the GPIO connector. Make sure its the right way arround, and that all the pins meet up with the socket.
+
+The leads from the motors will thread up through the chassis and each pair of leads should go to one of the two screw terminals labeller L and R for (left and right). If you put the leads in the wrong way around, the direction of the motor will be opposite to that expected, so just swap them over if this happens.
+
+[motors attacghed]
+
+Next, make sure that your Raspberry Pi's USB power lead is unplugged. From now on we are going to power it from batteries.
+
+**WARNING: Never power the Raspberry Pi from both batteries and the USB power connector. One or other, but NOT both.**
+
+Wire the battery pack into the third pair of screw terminals. +V towards the outside of the board. The Raspberry Pi's power light should light up and it will strt to boot.
+
+Having your Pi set up for WiFi will allow you to connect to it wirelessly [over SSH](http://learn.adafruit.com/adafruits-raspberry-pi-lesson-6-using-ssh/overview). SO you may want to plug in a USB WiFi dongle.
+
+
 
 
 # API Reference
@@ -184,6 +206,19 @@ to send the motors both at half speed in opposite directions is:
 If you fit the RRB2 with an SR-04 ultrasonic rangefinder, then you can use the following call to measure the distance to the enarest obstacle in cm.
 
 `rr.get_distance()`
+
+
+
+# Using I2C Displays
+
+The I2C socket is pin compatible with these Adafruit displays: 
++ [4 Digit 7-segment display (red)](http://www.adafruit.com/products/878)
++ [Mini 8x8 LED Matrix (red)](http://www.adafruit.com/products/870)
++ [Bi-color 8x8 LED Matrix (red)](http://www.adafruit.com/products/902)
+
+To use these you will need to download Adafruit's Python library for the Pi from [here](http://learn.adafruit.com/matrix-7-segment-led-backpack-with-the-raspberry-pi/overview).
+
+Make sure that you plug the display in the right way around. The socket pins are labelled on the RRB2.
 
 
 # Example Projects
