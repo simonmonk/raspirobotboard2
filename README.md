@@ -80,7 +80,7 @@ The quickest way to use the RRB2 as a roving robot is to buy a robot chassis suc
 
 Here is one such chassis. The first step is to bolt this all together. Note that these are usually supplied with a 4 x AA battery box. You will need to swap this for a similar 6 x AA battery box or a 7.2V LiPo battery pack. Rechargeable batteries are a good idea when driving motors.
 
-![Chassis](https://github.com/simonmonk/wiki_images/blob/master/rrb_robot_chassis_parts.jpg)
+![Chassis](https://raw.githubusercontent.com/simonmonk/wiki_images/master/rrb_robot_chassis_parts.jpg)
 
 
 Once the chassis is built, use some of the bolts suppled to fix the Raspberry Pi on the chassis and then attach the RRB2 onto the GPIO connector. Make sure its the right way arround, and that all the pins meet up with the socket.
