@@ -8,20 +8,23 @@ https://github.com/simonmonk/raspirobotboard
 
 Version 2 of the RaspiRobot Board has learnt from the lessons and feedback from version 1 and it is a great improvement over version 1. 
 
-![RRBv2](https://raw.githubusercontent.com/simonmonk/wiki_images/master/rrb2_on_pi.jpg)
+![RRBv2](https://raw.githubusercontent.com/simonmonk/wiki_images/master/rrb_on_chassis_fully%20loaded.JPG)
 
 
 The main features of version 2 are listed below. Improvements from version 1 are highlighted in bold:
 + Supplied fully assembled - no soldering
 + Bidirectional control of two motors
-+ **Variable (PWM) power control of the motors**. This allows you to both control the speed of the motors independently and use lower voltage motors than the voltage of your battery pack. 
++ **Variable (PWM) power control**. This allows you to both control the speed of the motors independently and the use of  lower voltage motors than the battery pack. 
 + **Supplies the Raspberry Pi with upto 2A using a switch mode power supply - run a fully loaded Pi and the Robot from 6 x AA batteries**
-+ **Rangefinder header socket directly compatible with cheap SR-04 ultrasonic range finders. Just plug them in directly**
++ **Rangefinder header socket directly compatible with cheap HC-SR-04 ultrasonic range finders. Just plug them in directly**
 + **5V I2C header, pin compatible with Adafruit displays**
 + Two buffered open collector outputs
 + Two LEDs
 + Two switch inputs
 + Screw terminals for motors and battery
+ 
+
+![RRBv2](https://raw.githubusercontent.com/simonmonk/wiki_images/master/labelled_rrb2.png)
 
 
 # How it Works
@@ -30,15 +33,22 @@ The diagram below shows how an RRB2 board is used. The RRB2 is powered from a ba
 
 ![RRBv2](https://raw.githubusercontent.com/simonmonk/wiki_images/master/schematic.png)
 
-Note that you do not need a separate power supply for the Raspberry Pi. The RRB2 will provide 5V at 2A with ease to the Raspberry Pi, and because the motors are powered directly from the battery and not via the RRB2s voltage regulator, the supply to the Raspberry Pi will remain clean and reliable.
+Note that you don't need a separate power supply for the Raspberry Pi. The RRB2 will provide 5V at 2A with ease to the Raspberry Pi, and because the motors are powered directly from the battery and not via the RRB2s voltage regulator, the supply to the Raspberry Pi will remain clean and reliable.
 
 This does mean that the motors that you use may be okay with the battery voltage. So, if you are using 6 x AA batteries giving a voltage of 9V then you should use motors that are okay with 9V.
 
 If you have lower voltage motors, such as 6V motors often supplied as part of a robot chassis, then you can still use these, but you must be careful to lower the output power of the motors in your control program, or you could burn out your motors.
 
 
+# Installing the Python Libraries
 
-# Installation
+On your Raspberry Pi, issue the following commands in a Terminal window:
+
+`
+wget https://github.com/simonmonk/raspirobotboard2/archive/master.zip
+`
+
+
 
 
 # Example Code
