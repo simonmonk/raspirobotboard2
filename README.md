@@ -59,14 +59,15 @@ Open a Python console (Python2 not 3) by typing the following into a Terminal wi
 
 Then, within the python console, type the following, one line at a time:
 
-`from rrb2 import *`
-`rr = RRB2()`
-`rr.set_led1(1)`
-`rr.set_led1(0)`
-`rr.set_led2(1)`
-`rr.set_led2(0)`
-`rr.sw1_closed()`
-
+```
+from rrb2 import *
+rr = RRB2()
+rr.set_led1(1)
+rr.set_led1(0)
+rr.set_led2(1)
+rr.set_led2(0)
+rr.sw1_closed()
+```
 
 The last step should display the answer "False" because no switch is attached.
 
@@ -84,8 +85,10 @@ The library implements a class called RaspiRobot. This is only available for Pyt
 
 To import the library and create an instance of the class, put this at the top of your Python program.
 
-`from rrb2 import *`
-`rr = RRB2()`
+```
+from rrb2 import *
+rr = RRB2()
+```
 
 The rest is pretty straightforward, there are just a load of useful methods on the class that you can use.
 
@@ -109,14 +112,16 @@ The sw1_closed() and sw2_closed() functions return true if the contacts for that
 
 The following test program will show you the state of each of the switch contacts.
 
-`import RPi.GPIO as GPIO`
-`from rrb2 import *`
-``
-`rr = RRB2()`
-``
-`while True:`
-`    print("SW1=" + str(rr.sw1_closed()) + " SW2=" + str(rr.sw2_closed()))`
-`    raw_input("check again")`
+```
+import RPi.GPIO as GPIO
+from rrb2 import *
+
+rr = RRB2()
+
+while True:
+    print("SW1=" + str(rr.sw1_closed()) + " SW2=" + str(rr.sw2_closed()))
+    raw_input("check again")
+```
 
 
 ## Open Collector Outputs
