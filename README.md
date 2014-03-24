@@ -161,6 +161,29 @@ The commands left, right and reverse all work in the same way.
 The stop command stops all the motors.
 
 
+## Motor (Low Level Interface)
+
+The low level interface is intended for control of the motors directly. It allows you to control the speed of each motor and its direction independently.
+
+The method for this (set_motors) takes four arguments: the left speed, left motor direction, right spped and direction.
+
+So to set both motors going forward at full speed, you would just use the following:
+
+`rr.set_motors(1, 0, 1, 0)`
+
+.. and half speed would be:
+
+`rr.set_motors(0.5, 0, 0.5, 0)`
+
+to send the motors both at half speed in opposite directions is:
+
+`rr.set_motors(0.5, 1, 0.5, 0)`
+
+## Range Finder
+
+If you fit the RRB2 with an SR-04 ultrasonic rangefinder, then you can use the following call to measure the distance to the enarest obstacle in cm.
+
+`rr.get_distance()`
 
 
 # Example Projects
