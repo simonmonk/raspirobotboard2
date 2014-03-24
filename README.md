@@ -45,8 +45,33 @@ If you have lower voltage motors, such as 6V motors often supplied as part of a 
 On your Raspberry Pi, issue the following commands in a Terminal window:
 
 `
-wget https://github.com/simonmonk/raspirobotboard2/archive/master.zip
+$ wget https://github.com/simonmonk/raspirobotboard2/archive/master.zip
+$ unzip master.zip
+$ cd raspirobotboard2-master
+$ sudo python setup.py install
 `
+Attach the RRB2 to your Raspberry Pi. You do not need to attach batteries, motors or anything else to the RRB2 just yet. For now you can just power it through the Pi. 
+
+Run Some Tests from the Python Console Now that everything is installed, we can experiment with the RaspiRobot Board v2, without any motors 
+
+Open a Python console (Python2 not 3) by typing the following into a Terminal window:
+`
+$ sudo python
+`
+
+Then, within the python console, type the following, one line at a time:
+
+`
+from rrb2 import *
+rr = RaspiRobot()
+rr.set_led1(1)
+rr.set_led1(0)
+rr.set_led2(1)
+rr.set_led2(0)
+rr.sw1_closed()
+`
+
+The last step should display the answer "False" because no switch is attached.
 
 
 
