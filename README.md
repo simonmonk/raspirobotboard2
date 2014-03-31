@@ -4,6 +4,9 @@ Source code for use with the RaspiRobot Board V2.
 
 https://github.com/simonmonk/raspirobotboard
 
+# Support
+If you need any help with the software or board please contact linda@monkmakes.com or leave a comment on monkmakes.com
+
 # Introduction
 
 Version 2 of the RaspiRobot Board (RRB2) has learnt by the feedback from version 1 and it is a great improvement. 
