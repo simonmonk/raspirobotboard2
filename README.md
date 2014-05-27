@@ -46,9 +46,9 @@ This does mean that the motors that you use may not be okay with the battery vol
 On your Raspberry Pi, issue the following commands in a Terminal window:
 
 ```
-$ wget https://github.com/simonmonk/raspirobotboard2/archive/master.zip
-$ unzip master.zip
-$ cd raspirobotboard2-master/python
+$ wget https://github.com/simonmonk/raspirobotboard2/raw/master/python/dist/rrb2-1.1.tar.gz
+$ tar -xzf rrb2-1.1.tar.gz
+$ cd rrb2-1.1
 $ sudo python setup.py install
 ```
 
