@@ -17,7 +17,7 @@ Version 2 of the RaspiRobot Board (RRB2) has learnt by the feedback from version
 The main features of version 2 are listed below. Changes from version 1 are highlighted in bold:
 + **Supplied fully assembled - no soldering**
 + Bi-directional control of two motors
-+ **Variable (PWM) power control**. This allows you to both control the speed of the motors independently and the use of  lower voltage motors than the battery pack. 
++ **Variable (PWM) power control**. This allows you to both control the speed of the motors independently. 
 + **Supplies the Raspberry Pi with upto 2A using a switch mode power supply - run a fully loaded Pi and the Robot from 6 x AA batteries**
 + **Rangefinder header socket directly compatible with cheap HC-SR-04 ultrasonic range finders. Just plug them in directly**
 + **5V I2C header, pin compatible with Adafruit displays**
@@ -36,9 +36,10 @@ The diagram below shows how an RRB2 board is used. The RRB2 is powered from a ba
 
 ![RRBv2](https://raw.githubusercontent.com/simonmonk/wiki_images/master/schematic.png)
 
-Note that you don't need a separate power supply for the Raspberry Pi. The RRB2 will provide 5V at 2A with ease to the Raspberry Pi, and because the motors are powered directly from the battery and not via the RRB2s voltage regulator, the supply to the Raspberry Pi will remain clean and reliable.
+Note that you don't need a separate power supply for the Raspberry Pi. The RRB2 will provide 5V at 2A with ease to the Raspberry Pi, and motors. 
 
-This does mean that the motors that you use may not be okay with the battery voltage. So, if you are using 6 x AA batteries giving a voltage of 9V then you should use motors that are okay with 9V. If you have lower voltage motors, such as 6V motors often supplied as part of a robot chassis, then you can still use these, but you must be careful to lower the output power of the motors in your control program, or you could burn out your motors. For example if your battery pack is 9V but your motors are 6V, then use a speed parameter of 6/9 or roughly 0.7 as the speed parameter to the motor commands.
+Note that 6V motor will usually work just fine at 5V.
+
 
 
 # Installing the Python Libraries
