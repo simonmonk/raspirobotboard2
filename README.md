@@ -4,7 +4,7 @@ Source code for use with the RaspiRobot Board V2.
 
 https://github.com/simonmonk/raspirobotboard
 
-Both version 1 and version 2 of the RasPiRobot Board work just fine with the new Raspberry Pi Model B+
+***Both version 1 and version 2 of the RasPiRobot Board work just fine with the new Raspberry Pi Model B+***
 
 # Support
 If you need any help with the software or board please contact linda@monkmakes.com or leave a comment on monkmakes.com
